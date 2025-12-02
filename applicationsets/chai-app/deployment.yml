@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: chai-app
-        image: trainwithshubham/chai-devopsssss:v1.0.0
+        image: vamsi011/django-app:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8000
         env:
         - name: VITE_GEMINI_API
           valueFrom:
