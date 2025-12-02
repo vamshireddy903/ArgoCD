@@ -103,7 +103,8 @@ Identify your cluster context (e.g., `kind-argocd-cluster`).
 2. Add the cluster to ArgoCD:
 
 ```bash
-argocd cluster add kind-argocd-cluster --name argocd-cluster --insecure
+argocd cluster add kind-demo-cluster --insecure
+
 ```
 
 3. Verify using:
