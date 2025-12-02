@@ -117,7 +117,7 @@ Run this command to create an ArgoCD application:
 
 ```bash
 argocd app create apache-app \
-  --repo https://github.com/<your-username>/argocd-demos.git \
+  --repo https://github.com/<your-username>/ArgoCD.git \
   --path cli_approach/apache \
   --dest-server https://<your_added_cluster_url> \
   --dest-namespace default \
