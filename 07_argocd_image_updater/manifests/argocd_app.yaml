@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: argocd-image-updater=vamsi011/django-app
+    argocd-image-updater.argoproj.io/argocd-image-updater.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-credentials: argocd-image-updater-git-creds
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/vamshireddy903/ArgoCD.git
+    targetRevision: main
+    path: 07_argocd_image_updater/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
