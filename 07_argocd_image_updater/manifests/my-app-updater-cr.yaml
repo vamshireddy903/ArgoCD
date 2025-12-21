@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: my-app-updater
+  namespace: argocd-image-updater-system
+spec:
+  git:
+    repoURL: https://github.com/vamshireddy903/ArgoCD.git
+    credentialsSecretName: argocd-image-updater-git-creds
+  applications:
+    - name: my-app
+      namespace: argocd
+  images:
+    - name: vamsi011/django-app
+      updateStrategy: semver
