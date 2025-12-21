@@ -4,6 +4,16 @@ metadata:
   name: argocd-deployment
   labels:
     app: argocd
+  annotations:
+     # Assign alias 'chai-app' to your image
+    argocd-image-updater.argoproj.io/image-list: chai-app=vamsi011/django-app # Maps the image alias 'chai-app' to your DockerHub image
+
+    # Use git write-back
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds # Configures image updater to write changes back to Git using provided secret
+
+    # Update strategy for chai-app image
+    argocd-image-updater.argoproj.io/chai-app.update-strategy: semver # Uses semantic versioning for image updates
+
 spec:
   replicas: 1
   selector:
